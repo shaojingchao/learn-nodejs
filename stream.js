@@ -1,6 +1,9 @@
 var fs = require("fs");
 var data = '';
 
+
+console.time("获取数据时间");
+
 // 创建可读流
 var readerStream = fs.createReadStream('input.txt');
 
@@ -14,10 +17,13 @@ readerStream.on('data', function(chunk) {
 
 readerStream.on('end',function(){
    console.log(data);
+
+console.timeEnd('获取数据时间');
 });
 
 readerStream.on('error', function(err){
    console.log(err.stack);
 });
+
 
 console.log("程序执行完毕");
