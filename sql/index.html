@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h3>
+    <a href="javascript:;" id="add">添加</a>
+    <a href="javascript:;" id="remove">删除</a>
+    <a href="javascript:;" id="update">修改</a>
+    <a href="javascript:;" id="find">查询 [name:'菜鸟教程']</a>
+  </h3>
+  <div>
+    <pre id="result">
+      
+    </pre>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+<script>
+  $(function(){
+    $("#add").on("click",function(){
+      $.get("/api_add",function(data){
+        console.log(data)
+        $("#result").html(JSON.stringify(data,true,4))
+      })
+    })
+
+    $("#remove").on("click",function(){
+      $.get("/api_remove",function(data){
+        $("#result").html(JSON.stringify(data,true,4))
+      })
+    })
+
+    $("#update").on("click",function(){
+      $.get("/api_update",function(data){
+        $("#result").html(JSON.stringify(data,true,4))
+      })
+    })
+
+    $("#find").on("click",function(){
+      $.get("/api_find",function(data){
+        $("#result").html(JSON.stringify(data,true,4))
+      })
+    })
+
+  })
+</script>
+</html>
